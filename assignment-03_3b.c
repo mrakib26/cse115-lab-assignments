@@ -3,7 +3,7 @@ Write down a program that will take a string as input and will check whether thi
 palindrome or not. A palindrome is a sentence which remains same if taken backward. For
 example EYE is a palindrome because if you read opposite it remains the same EYE. Do it in the
 following ways:
-a. Using library functions
+b. Not using any library functions except the gets and strlen
 */
 
 #include<stdio.h>
@@ -11,20 +11,27 @@ a. Using library functions
 #include<ctype.h>
 int main() 
 {
-    char str[100], rev[100]; 
+    char str[100];
+    int len, isPalindrome = 1;
 
-    printf("Enter a string: "); 
-    gets(str); 
+    printf("Enter a string: ");
+    gets(str);
 
-    strcpy(rev, str); 
-    strrev(rev); 
-    
-    if(strcmpi(str, rev) == 0) {
+    for(len = 0; str[len] != '\0'; len++); 
+
+    for(int i = 0; i < len / 2; i++) {
+        if(tolower(str[i]) != tolower(str[len - 1 - i])) {
+            isPalindrome = 0;
+            break;
+        }
+    }
+
+    if(isPalindrome) {
         printf("The string is a palindrome.\n");
     }
     else {
         printf("The string is not a palindrome.\n");
     }
 
-    return 0;        
+    return 0;
 }
