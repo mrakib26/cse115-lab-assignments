@@ -11,7 +11,7 @@ int main()
     if (h < 0) {
         printf("Height cannot be negative.\n");
     } else {
-        t = sqrt((2 * h) / g);
+        t = sqrt((2*h)/g);
         printf("Falling time = %.2f seconds\n", t);
     }
 
